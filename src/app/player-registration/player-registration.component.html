@@ -1,0 +1,182 @@
+<div class="container">
+    <div class="row py-1">
+        <div class="col">
+            <h2 class="text-center text-danger">
+               <u> Player Registration Form</u>
+            </h2>
+           
+        </div>
+    </div>
+    <form [formGroup]="registrationForm" autocomplete="off">
+    <div class="row py-3">
+        <!-- <div class="col-lg-3 "> -->
+            
+                <div class="col-lg-3 form-group py-1">
+                    <label>Name</label>
+                    
+                    <input type="text" class="form-control " formControlName="Name">
+                    <div class="text-danger" *ngIf="registrationForm.get('Name').touched && registrationForm.get('Name').errors?.required">This field is required </div>
+                </div>
+                <div class="col-lg-3 form-group py-1">
+                    <label>Mother Name</label>
+                    
+                    <input type="text" class="form-control " formControlName="MotherName">
+                    <div class="text-danger" *ngIf="registrationForm.get('MotherName').touched && registrationForm.get('MotherName').errors?.required">This field is required </div>
+                </div>
+                <div class="col-lg-3 form-group py-1">
+                    <label>Father/Guardian Name</label>
+                    
+                    <input type="text" class="form-control " formControlName="FatherName">
+                    <div class="text-danger" *ngIf="registrationForm.get('FatherName').touched && registrationForm.get('FatherName').errors?.required">This field is required </div>
+                </div>
+                <div class="col-lg-3 form-group py-1">
+                    <label>Date Of Birth</label>
+                    
+                    <input type="date" class="form-control " formControlName="Dob">
+                    <!-- <div class="text-danger" *ngIf="registrationForm.get('UserName').touched && registrationForm.get('UserName').errors?.required">This field is required </div> -->
+                </div>
+                <div class="col-lg-3 form-group py-1">
+                    <label>Education </label>
+                    <select class="form-control" formControlName="Education">
+                            <option  >Select Class</option>
+                            <option>5th</option>
+                            <option>6th</option>
+                            <option>7th</option>
+                            <option>8th</option>
+                            <option>9th</option>
+                            <option>10th</option>
+                            <option>11th</option>
+                            <option>12th</option>
+                           <option>Under Graduate</option>
+                    </select>
+                   
+                    <!-- <div class="text-danger" *ngIf="registrationForm.get('UserName').touched && registrationForm.get('UserName').errors?.required">This field is required </div> -->
+                </div>
+                <div class="col-lg-3 form-group py-1">
+                    <label>School/College Name</label>
+                    
+                    <input type="text" class="form-control " formControlName="School">
+                   
+                </div>
+                <div class="col-lg-3 form-group py-1">
+                    <label>Districit/City</label>
+                    
+                    <input type="text" class="form-control" formControlName="District" value="Gorakhpur" placeholder="Gorakhpur">
+                   
+                </div>
+                <div class="col-lg-3 form-group py-1">
+                    <label>Block </label>
+                    <select  class="form-control" (change)="nlist($event.target.value)" formControlName="Vikaskhand">
+                        <option value="0">Select Block</option>
+                        <option *ngFor="let item of block" value="{{item.id}}">{{item.blockName}}</option>
+                        
+                       
+                </select>
+                                  
+                   
+                </div>
+
+                <div class="col-lg-3 form-group py-1">
+                    <label>Nyay Panchyat </label>
+                    <select class="form-control"  (change)="glist($event.target.value)" formControlName="NyayPanchyat" >
+                        <option value="0" >Select Nyay Panchayt</option>
+                        <option *ngFor="let nitem of nyay" value="{{nitem.nId}}">{{nitem.nyayPanchayatName}}</option>
+                       
+                </select>                                
+                </div>
+                <div class="col-lg-3 form-group py-1">
+                    <label>Gram Panchyat </label>
+                    <select class="form-control" formControlName="GramPanchyat">
+                        <option value="undefined" >Select Nyay Panchayt</option>
+                       <option *ngFor="let gitem of gram" value="{{gitem.gramPanchyatName}}" >{{gitem.gramPanchyatName}}</option>
+                       
+                </select>                                
+                </div>
+                <div class="col-lg-3 form-group py-1">
+                    <label>Mobile Number</label>
+                    
+                    <input type="text" class="form-control " formControlName="Mobile">
+                    <div class="text-danger" *ngIf="registrationForm.get('Mobile').touched && registrationForm.get('Mobile').errors?.required">This field is required </div>
+                </div>
+                <div class="col-lg-3 form-group py-1">
+                    <label>Aadhar Number</label>
+                    
+                    <input type="text" class="form-control " formControlName="AadharNumber">
+                    <!-- <div class="text-danger" *ngIf="registrationForm.get('UserName').touched && registrationForm.get('UserName').errors?.required">This field is required </div> -->
+                </div>
+                <div class="col-lg-6 ">
+
+                    <app-upload (onUploadFinished)="onUploadFinished($event)">                  
+                    </app-upload>
+                    <!-- <label>Photo </label>
+                    
+                    <input #file type="file"  (change)="showImg(file.files)" class="form-control " formControlName="Photo" accept="image/*" >
+                    <div class="text-danger" *ngIf="message">{{message}}</div> -->
+                    <!-- <span style="color:red;" *ngIf="message">{{message}}</span> -->
+                          
+                </div>
+                <!-- <div class="col-lg-3">
+                    <img [src]="imgURL" height=150 width=200 *ngIf="imgURL">
+                  </div> -->
+                <!-- <div class="col-lg-3 form-group py-1">
+                    <label>Identity Proof </label>
+                    
+                    <input type="file" class="form-control " formControlName="AadharPhoto">
+                    <div class="text-danger" *ngIf="registrationForm.get('UserName').touched && registrationForm.get('UserName').errors?.required">This field is required </div>
+                </div> -->
+            
+                <!-- <div class="col-lg-3">
+                    <img [src]="imgURL" height=150 width=200 *ngIf="imgURL">
+                  </div -->
+                  <div class="form-group py-1">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"  formControlName="Terms">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            I have read and agree to the <a routerLink='/termscondition' >terms and condition</a>. 
+                        </label>
+                        <div class="text-danger" *ngIf="registrationForm.get('Terms').touched && registrationForm.get('Terms').errors?.required">Accept Terms and Conditions</div>
+                      </div>
+                </div>
+                <div class="form-group py-1">
+                    <button class="btn btn-success" [disabled]="!registrationForm.valid" (click)="onSubmit()">Register</button>
+                </div>
+
+            
+        <!-- </div>
+        <div class="col"></div> -->
+
+    </div>
+</form>
+</div>
+<div class="container">
+    <div class="row py-3">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Mother Name</th>
+                    <th>Father Name</th>
+                    <th>Vikaskhand</th>
+                    <th>Nyaypanchyat </th>
+                    <th>Gram Panchyat</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of players">
+                    <td><img src="http://api.devnox.in/{{p.photoName}}" width=50 height=50></td>
+                    <td>{{p.name}}</td>
+                     <td>{{p.mobile}}</td>
+                    <td>{{p.motherName}}</td>
+                    <td>{{p.fatherName}}</td>
+                    <td>{{p.vikaskhand}}</td>
+                    <td>{{p.nyayPanchyat}}</td>
+                    <td>{{p.gramPanchyat}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

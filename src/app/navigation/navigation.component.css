@@ -1,0 +1,11 @@
+
+a{
+    font-family: 'Raleway';
+    font-size: 20px;
+    text-transform: uppercase;
+   
+}
+a:hover{
+    background-color: #FB651E;
+    color:white;
+}

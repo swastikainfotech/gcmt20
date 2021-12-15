@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row py-3">
+        <div class="col-lg-6">
+            <h2 class="text-center text-danger">
+              Umpire List 
+               
+            </h2>
+            <div class="row" style="overflow-y: scroll; height: 500px;">
+                <table class="table table-bordered table-striped">
+                 <thead > 
+                 <tr>
+                        <th>Name</th>
+                        <th>Profile</th>
+                        <th>Mobile No</th>
+                        <th>Block</th>
+         
+                    </tr>
+                 </thead>  
+                 <tbody>
+                    <tr *ngFor="let item of upireDetails">
+                        <td>{{item.name}}</td>
+                        <td>{{item.profile}}</td>
+                        <td>{{item.mobile}}</td>
+                        <td>{{item.block}}</td>
+                    </tr>
+                 </tbody>
+                </table>
+         
+             </div>
+        </div>
+        <div class="col-lg-6">
+            <h2 class="text-center text-danger">
+                Scorer  List 
+                 
+              </h2>
+              <div class="row" style="overflow-y: scroll; height: 500px;">
+                <table class="table table-bordered table-striped">
+                 <thead > 
+                 <tr>
+                        <th>Name</th>
+                        <th>Profile</th>
+                        <th>Mobile No</th>
+                        <th>Block</th>
+         
+                    </tr>
+                 </thead>  
+                 <tbody>
+                    <tr *ngFor="let item of scorerDetails">
+                        <td>{{item.name}}</td>
+                        <td>{{item.profile}}</td>
+                        <td>{{item.mobile}}</td>
+                        <td>{{item.block}}</td>
+                    </tr>
+                 </tbody>
+                </table>
+         
+             </div>
+        </div>
+        
+    </div>
+    
+   
+</div>
